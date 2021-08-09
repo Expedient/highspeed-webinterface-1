@@ -11,13 +11,18 @@ def home():
     return render_template("base.html", data = highspeed)
     
 def openjson(filename):
-    # Opening JSON file
-    f = open(filename)
-  
-    # returns JSON object as a dictionary
-    # a dictionary
-    data = json.load(f)
-  
+    try:
+        # Opening JSON file
+        f = open(filename)
+    except:
+        print("Cant find highspeed.json")
+
+    try:    
+        # returns JSON object as a dictionary
+        data = json.load(f)
+    except:
+        print("Cant load JSON file")
+        
     #close file
     f.close()
     
