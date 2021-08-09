@@ -2,7 +2,7 @@
 
 install flask "pip install flask"
 
-download and unzip highspeed-weinterface
+download and unzip highspeed-webinterface
 
 run the app "python app.py"
 
