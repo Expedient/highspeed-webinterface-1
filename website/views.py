@@ -23,6 +23,7 @@ def openjson(filename):
     except:
         print("Cant load JSON file")
         
+        
     #close file
     f.close()
     
