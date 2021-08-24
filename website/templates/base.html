@@ -30,15 +30,19 @@
 <div class="container-fluid" id = "jsontree">
  <h3>10 Gig Ring Monitored Interfaces</h3> 
  <br>
- <!-- loop threw items in the list of dict's and sort them by the 0 index value aka router name.
+ {% if data == 1 %}
+  <strong>Error loading JSON File</strong> 
+  {% else %}
+    <!-- loop threw items in the list of dict's and sort them by the 0 index value aka router name.
       Need to look at json file format and maybe added name and interface keys
--->
- {% for key, value in data["devices"][0].items() | sort(attribute='0') %}
-   <ul>
-     <li>Name:<strong> {{key}} </strong></li> 
-       <ol>interfaces: {{value}}</ol>
-   </ul>   
- {% endfor %}
+    -->
+  {% for key, value in data["devices"][0].items() | sort(attribute='0') %}
+    <ul>
+      <li>Name:<strong> {{key}} </strong></li> 
+        <ol>interfaces: {{value}}</ol>
+    </ul>   
+  {% endfor %}
+{% endif %}
 </div>
 
 </script>

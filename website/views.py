@@ -8,7 +8,11 @@ views = Blueprint("views", __name__)
 def home():
     highspeed = openjson('website/static/highspeed.json')
     
-    return render_template("base.html", data = highspeed)
+    if highspeed == 1:
+        return render_template("base.html", data = 1)       
+    else:
+        return render_template("base.html", data = highspeed)
+    
     
 def openjson(filename):
     try:
@@ -16,15 +20,17 @@ def openjson(filename):
         f = open(filename)
     except:
         print("Cant find highspeed.json")
-
-    try:    
-        # returns JSON object as a dictionary
-        data = json.load(f)
-    except:
-        print("Cant load JSON file")
+    else:
+        try:    
+            # returns JSON object as a dictionary
+            data = json.load(f)
+            return data
+        except:
+            print("Cant load JSON file")
+            # return 1 on error
+            return 1
+        finally:        
+            #close file
+            f.close()
         
-        
-    #close file
-    f.close()
-    
-    return data
+   
