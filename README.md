@@ -22,3 +22,4 @@ TODO:
 
 <h1>uWSGI Deployment Command</h1>
 uwsgi --http :9090 -w app:app
+uwsgi --ini hswi.ini
