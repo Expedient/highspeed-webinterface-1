@@ -18,3 +18,9 @@ TODO:
   <li>load balance</li>
   <li>Nginx deployment/ncbot</li>
 </ul>
+
+
+<h1>uWSGI Deployment Command</h1>
+uwsgi --http :9090 -w app:app 
+<br>
+uwsgi --ini hswi.ini
