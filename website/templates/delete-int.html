@@ -38,10 +38,8 @@
     -->
   {% for key, value in data["devices"][0].items() | sort(attribute='0') %}
     <ul>
-      <li>Name:<strong> {{key}} </strong><a href=""></a></li> 
-        {% for iface in value %}
-          <ol>interfaces: {{iface}} <a href="{{ url_for('views.del_int', devicename = key, interfacename = iface) }}">Delete interface</a></ol>
-        {% endfor %}  
+      <li>Name:<strong> {{key}} </strong><a href="{{ url_for('delete-int', interface = {{key}}) }}">Delete interface(s)</a></li> 
+        <ol>interfaces: {{value}}</ol>
     </ul>   
   {% endfor %}
 {% endif %}

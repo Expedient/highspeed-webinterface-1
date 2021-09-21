@@ -15,7 +15,29 @@ def home():
     else:
         return render_template("base.html", data = highspeed)
     
+
+@views.route("/del_int/<string:devicename>/<path:interfacename>")
+def del_int(devicename, interfacename):
+    highspeed = openjson('website/static/highspeed.json')
+
+    try:
+        if highspeed == 1:
+            return render_template("base.html", data = 1)       
+        
+        if devicename in highspeed["devices"][0]:
+            if interfacename in highspeed['devices'][0][devicename]:
+                highspeed['devices'][0][devicename].remove(interfacename)
+            else:
+                return render_template("base.html", data = 1)   
+
+            return render_template("base.html", data = highspeed, dev = devicename, interface = interfacename)
+        else:
+            #failed to find key or value
+            return render_template("base.html", data = highspeed, dev = devicename, interface = interfacename)
+    except:
+        return render_template("base.html", data = 1)
     
+
 def openjson(filename):
     try:
         # Opening JSON file
